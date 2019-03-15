@@ -15,11 +15,11 @@ Joystream Classic is still in its early stages and may contain bugs. Use at your
 
 You can download signed prebuilt binaries from the [Releases](https://github.com/JoystreamClassic/joystream-desktop/releases) section.
 
-## Building
+## Building from source
 
 To build the application from source you will need to have a development setup on your system. The tools required are:
 - [git](https://git-scm.com/)
-- [node-js](https://nodejs.org)
+- [node-js](https://nodejs.org) version 8
 - [node-gyp](https://github.com/nodejs/node-gyp)
 - CMake (minimum version 3.1 for support of CMAKE_CXX_STANDARD variable)
 - python2 + pip
@@ -28,13 +28,17 @@ To build the application from source you will need to have a development setup o
 
 Follow [instruction in node-gyp readme](https://github.com/nodejs/node-gyp) for setting up a compiler toolchain for your platform.
 
-Configuring conan:
+You may need some additional steps to get your development environment just right. The [travis config file](.travis.yml) (for linux and osx) and [appveyor.yml](appveyor.yml) for windows have some hints.
+
+### Configuring conan
 
 Please use conan v0.28.1 (newer versions broke the recipes and will need to be updated)
 To install specific version of conan:
 ```
 pip install "conan==0.28.1"
 ```
+
+Make sure to update `~/.conan/settings.yml` and `~/.conan/profiles/default` to configure for your compiler version if you see an error about invalid `settings.compiler.version` during build later.(older version of conan may not be aware of your newest compiler version)
 
 ```
 # Add Joystream conan repository
@@ -47,10 +51,11 @@ ln -s ~/.local ~/.electron-gyp/.local
 ```
 
 Step-by-Step build instructions:
+
 ```
 # Clone the repository
 git clone https://github.com/JoystreamClassic/joystream-desktop.git
-cd joystream-electron
+cd joystream-desktop
 
 # If building on windows install npm v4.6.1 (build fails with newer versions of npm)
 npm install -g npm@4.6.1
