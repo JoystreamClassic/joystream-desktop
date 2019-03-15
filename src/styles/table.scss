@@ -1,0 +1,86 @@
+@import '_constants';
+
+// Values required in calculations
+$row-padding: 15px;
+$content-padding: 10px;
+
+.my_table {
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: $content-padding;
+    background-color: $grey-background;
+
+    //border-top-width: 3px;
+    //border-top-color: $grey-accent;
+    //border-top-style: solid;
+
+    //border-left-width: 2px;
+    //border-left-color: $grey-accent;
+    //border-left-style: solid;
+
+    .table_row {
+      
+      .toolbar {
+        display: none;
+      }
+
+    }
+
+    .table_row:hover {
+      .toolbar {
+        display: block;
+      }
+      
+    }
+
+    // Move this out, as its part of do
+    .hint-row {
+      background-color: #D9D9D9;
+      color: #818181;
+      font-family: $major-font-family;
+      font-size: 24px;
+      justify-content: center;
+    }
+
+  }
+
+  .field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    //flex-grow: 0.05;
+    flex: 0 0 90px;
+    margin-left: 30px;
+    text-align: center;
+
+    .label {
+
+      height: 16px;
+      font-weight: bold;
+      font-size: 10px;
+      border-radius: 12px;
+
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+
+  /* First column, `name` column */
+  .field:first-of-type {
+    justify-content: flex-start;
+    flex-grow: 1;
+    padding-left: 10px;
+    margin-left: 0px;
+    /** font-size: 20px; **/
+
+    min-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+
+}

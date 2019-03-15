@@ -1,0 +1,82 @@
+language: node_js
+
+node_js:
+  - "7"
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      # requiring sudo will trigger builds to run on a dedicated VM, which has more
+      # RAM. This is required for building boost from source successfully.
+      sudo: required
+      addons:
+        apt:
+          sources:
+            - george-edison55-precise-backports
+          packages:
+            - cmake
+            - cmake-data
+            - rpm
+            - fakeroot
+    - os: osx
+      osx_image: xcode7.3
+      sudo: false
+
+before_install:
+    # 2016-10: Apple doesn't include openssl any more because of security
+    # problems openssl had. Manually specify path to includes/libs.
+  - if [[ "$TRAVIS_OS_NAME" = osx ]]; then
+      rvm install ruby-2.3.3;
+      rvm --default use 2.3.3;
+      ruby --version;
+      brew upgrade openssl;
+      brew install python@2;
+      export PATH="/usr/local/opt/python@2/libexec/bin:$PATH";
+      export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH";
+      export CPPFLAGS="-I/usr/local/opt/openssl/include";
+      export LDFLAGS="-L/usr/local/opt/openssl/lib";
+      python --version;
+      python -c "import ssl; print ssl.OPENSSL_VERSION";
+      python -m pip install --upgrade --force pip setuptools;
+    fi
+  # Install conan and downgrade version of pyopenssl to use openssl 1.0.x
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then
+      python -m pip install "conan==0.28.1";
+      python -m pip uninstall --yes pyopenssl;
+      python -m pip uninstall --yes cryptography;
+      python -m pip install "pyopenssl>=16.0.0, <17.0.0";
+    else
+      pip install --user "conan==0.28.1";
+    fi
+  - conan remote add joystream https://api.bintray.com/conan/joystream/joystream True
+install:
+
+
+before_script:
+  # fix for electron-mocha unit tests to work
+  - if [ "$TRAVIS_OS_NAME" = linux ]; then export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; fi
+
+script:
+  - npm install
+  - mkdir ~/.electron-gyp
+  - ln -s $HOME/.conan $HOME/.electron-gyp/.conan
+  # Fix so python can find conan modules when its running under electron-rebuild env
+  - if [ "$TRAVIS_OS_NAME" = linux ]; then ln -s $HOME/.local $HOME/.electron-gyp/.local; fi
+  # rebuild native addons for electron - unit tests use electron-mocha
+  - npm run rebuild
+  - npm test
+
+before_deploy:
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then ./deploy_scripts/travis/add-osx-certs.sh; fi
+
+after_deploy:
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then ./deploy_scripts/travis/remove-osx-certs.sh; fi
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: npm run publish
+  on:
+    branch:
+      - release*

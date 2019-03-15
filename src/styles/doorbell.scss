@@ -1,0 +1,25 @@
+@import "_constants";
+
+#doorbell-button {
+  background-color: rgb(17, 21, 59);
+}
+
+#doorbell form legend {
+  border-bottom: none;
+  font-family: $major-font-family;
+  color: $primary-text-color;
+}
+
+#doorbell .buttons button {
+  //width: inherit !important;
+}
+
+#doorbell-submit-button {
+  background-color: #778EF8;
+  border-color: #778EF8;
+}
+
+#doorbell-submit-button:hover {
+  background-color: #555FAD;
+  border-color: #555FAD;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Standalone Window</title>
+</head>
+<body style="margin:0px;-webkit-app-region: drag">
+
+    <div id='root' style="height:100vh;"></div>
+    <script type="application/javascript" charset="utf-8">
+
+        import React from 'react'
+        import ReactDOM from 'react-dom'
+        import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+        import UpdaterWindow from '../../updater-window/components/UpdaterWindow'
+        import UpdaterStore from  '../../updater-window/UpdaterStore'
+
+        import pjson from '../../../package.json'
+
+        // First time render
+        render()
+
+        // Setup future rendering
+        if (module.hot) {
+            module.hot.accept(render)
+        }
+
+        function render() {
+
+            // NB: We have to re-require Application every time, or else this won't work
+            var AppContainer = require('react-hot-loader').AppContainer
+
+            let store = new UpdaterStore()
+            store.setState('waiting-to-start-download')
+            store.setMostRecentVersion("9.9.9")
+
+            ReactDOM.render(
+                    <AppContainer>
+                        <MuiThemeProvider>
+
+                            <UpdaterWindow store={store}
+                                           installedVersionString={pjson.version}
+                                           onUseOldVersionClicked={() => {}}
+                                           onUpdateClicked={() => {}}
+                                           onInstallClicked={() => {}}
+                                           onErrorCloseClicked={() => {}}
+                            />
+                        </MuiThemeProvider>
+                    </AppContainer>
+                ,
+                document.getElementById('root')
+            )
+        }
+
+    </script>
+
+</body>
+</html>

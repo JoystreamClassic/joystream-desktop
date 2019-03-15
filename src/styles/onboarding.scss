@@ -1,0 +1,17 @@
+@import '_constants';
+
+.onBoardingScene {
+  background-color: $grey-background;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%; // quick hack
+  color: $primary-text-color;
+
+  .CenterPiece {
+
+    align-self: center;
+
+  }
+
+}

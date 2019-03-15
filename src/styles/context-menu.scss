@@ -1,0 +1,200 @@
+@import '_constants';
+
+.context-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #D6D6D6;
+  border-radius: 5px;
+  width: 289px;
+  padding: 2px;
+
+  .item {
+    display: flex;
+    padding: 14px;
+
+    .icon {
+      margin-right: 15px; /** same as item.margin **/
+      background-repeat: no-repeat;
+      min-width: 22px;
+    }
+
+    .body {
+      flex-grow: 1;
+
+      .label {
+        font-size: 18px;
+        color: $menu-primary-text-color;
+      }
+
+      .description {
+        font-size: 12px;
+        color: $menu-secondary-text-color;
+        margin-top: 7px;
+      }
+    }
+  }
+
+  // A clickable context menu item
+
+  .item-clickable {
+    cursor: pointer;
+  }
+
+  .item-clickable:hover {
+    color: white;
+    background-color: #778EF8;
+
+    .body {
+
+      .label {
+        font-size: 18px;
+        color: white;
+      }
+
+      .description {
+        color: white;
+      }
+    }
+  }
+
+  .item-disabled {
+    cursor: default;
+    .body {
+      .label {
+        color: $menu-secondary-text-color;
+      }
+    }
+  }
+
+  .full-separator {
+    border-top: solid 1px #EDEDED;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 15px; /** should be deduced from other values **/
+    margin-right: 15px;
+  }
+
+  .half-separator {
+    border-top: solid 1px #EDEDED;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 53px; /** should be deduced from other values **/
+    margin-right: 15px;
+  }
+}
+
+// Swarm item
+
+.swarm-item {
+  cursor: default;
+
+  .icon {
+    background-image: url('../assets/icon/swarm.svg');
+  }
+
+  .info-box-container {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    margin-top: 7px;
+
+    .info-box {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      width: 70px;
+
+      .title {
+        font-size: 12px;
+        color: $menu-secondary-text-color;
+      }
+
+      .value {
+        font-size: 20px;
+        color: $menu-primary-text-color;
+      }
+    }
+  }
+}
+
+// Icons
+
+// pause
+
+.pause-item {
+  .icon {
+    background-image: url('../assets/icon/pause.svg')
+  }
+}
+
+.pause-item:hover {
+  .icon {
+    background-image: url('../assets/icon/pause-hover.svg')
+  }
+}
+
+// continue
+
+.continue-item {
+  .icon {
+    background-image: url('../assets/icon/continue.svg');
+  }
+}
+
+.continue-item:hover {
+  .icon {
+    background-image: url('../assets/icon/continue-hover.svg');
+  }
+}
+
+// change price
+
+.change-price-item {
+  .icon {
+    background-image: url('../assets/icon/change-price.svg');
+  }
+}
+
+.change-price-item:hover {
+  .icon {
+    background-image: url('../assets/icon/change-price-hover.svg');
+  }
+}
+
+// change price disabled
+
+.change-price-disabled-item {
+  .icon {
+    background-image: url('../assets/icon/change-price-disabled.svg');
+  }
+}
+
+// remove
+
+.remove-item {
+  .icon {
+    background-image: url('../assets/icon/remove.svg');
+  }
+}
+
+.remove-item:hover {
+  .icon {
+    background-image: url('../assets/icon/remove-hover.svg');
+  }
+}
+
+// icon remove and delete data
+
+.remove-and-delete-data-item {
+  .icon {
+    background-image: url('../assets/icon/trash.svg');
+  }
+
+}
+
+.remove-and-delete-data-item:hover {
+  .icon {
+    background-image: url('../assets/icon/trash-hover.svg');
+  }
+}

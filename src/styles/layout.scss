@@ -1,0 +1,66 @@
+@import '_constants';
+
+#root {
+  height: 100vh;
+  font-family: $major-font-family;
+
+  :not(input):not(textarea),
+  :not(input):not(textarea)::after,
+  :not(input):not(textarea)::before {
+      -webkit-user-select: none;
+      user-select: none;
+      cursor: default;
+  }
+  input, button, textarea, :focus {
+      outline: none; // You should add some other style for :focus to help UX/a11y
+      -webkit-app-region: no-drag;
+  }
+
+  .app-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    font-family: $major-font-family;
+
+    .navigation-frame-container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+  }
+
+  // Fixes broken rendering of text,
+  // confirmed to work on
+  // - OSX
+  -webkit-font-smoothing: antialiased;
+}
+
+.fadein {
+  -webkit-animation: fadeinFrames 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeinFrames 2s; /* Firefox < 16 */
+  -ms-animation: fadeinFrames 2s; /* Internet Explorer */
+  -o-animation: fadeinFrames 2s; /* Opera < 12.1 */
+  animation: fadeinFrames 2s;
+  animation-fill-mode: forwards; // Hold last keyframe when done
+}
+
+@keyframes fadeinFrames {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+// Fadeout
+
+.fadeout {
+  -webkit-animation: fadeoutFrames 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeoutFrames 2s; /* Firefox < 16 */
+  -ms-animation: fadeoutFrames 2s; /* Internet Explorer */
+  -o-animation: fadeoutFrames 2s; /* Opera < 12.1 */
+  animation: fadeoutFrames 2s;
+  animation-fill-mode: forwards; // Hold last keyframe when done
+}
+
+@keyframes fadeoutFrames {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}

@@ -13,7 +13,7 @@ Joystream Classic is still in its early stages and may contain bugs. Use at your
 
 ## Download Binaries
 
-You can download signed prebuilt binaries from the [Releases](https://github.com/Joystream/joystream-electron/releases) section.
+You can download signed prebuilt binaries from the [Releases](https://github.com/JoystreamClassic/joystream-desktop/releases) section.
 
 ## Building
 
@@ -49,7 +49,7 @@ ln -s ~/.local ~/.electron-gyp/.local
 Step-by-Step build instructions:
 ```
 # Clone the repository
-git clone https://github.com/Joystream/joystream-electron.git
+git clone https://github.com/JoystreamClassic/joystream-desktop.git
 cd joystream-electron
 
 # If building on windows install npm v4.6.1 (build fails with newer versions of npm)

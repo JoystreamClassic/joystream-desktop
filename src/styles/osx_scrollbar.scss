@@ -1,0 +1,29 @@
+/**
+ * Created by bedeho on 23/12/2017.
+ */
+
+@import '_constants';
+
+// Entire scrollbar
+.osx_scrollbar::-webkit-scrollbar {
+  width: $scrollbar-width;
+}
+
+// Background track
+.osx_scrollbar::-webkit-scrollbar-track {
+  background: #F9F9F9;
+}
+
+.osx_scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #C2C2C2;
+  border: 3px solid #F9F9F9;
+}
+
+.osx_scrollbar::-webkit-scrollbar-thumb:hover {
+  background:rgba(0,0,0,0.4);
+}
+
+.osx_scrollbar::-webkit-scrollbar-thumb:window-inactive {
+  background:rgba(0,0,0,0.05);
+}

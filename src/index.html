@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>JoyStream</title>
+    <!--
+      We are using custom css/material-ui, I don't think we depend on any bootstrap components
+      but we may be relying on some of the default styles/fonts applied to html/body (margins settings for example)
+      which comes from Normalize.css (maybe that is all we need?)
+      get rid of it if possible!
+    -->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
+
+    <!-- temporary, move into components later -->
+    <!-- <link rel="stylesheet" type="text/scss" href="styles/canvas.scss" /> -->
+
+    <link rel="stylesheet" type="text/scss" href="styles/fonts.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/common.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/layout.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/table.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/toolbar.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/context-menu.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/doorbell.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/onboarding.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/downloading.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/react-tooltip-overrides.scss" />
+    <link rel="stylesheet" type="text/scss" href="styles/osx_scrollbar.scss" />
+
+  </head>
+  <body>
+
+    <div id="root">
+    </div>
+
+    <!-- No longer used - remove eventually (double check Doorbell doesn't need jQuery)
+    <script>window.$ = window.jQuery = require('jquery')</script>
+    <script>window.Tether = require('tether')</script>
+    <script>window.Popper = require('popper.js')</script>
+    <script type="application/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    -->
+
+    <!-- Main applictaion in React
+         imported instead of added inline to avoid polluting global namespace. -->
+    <script type='application/javascript'>
+       // What logs to show in dev console
+       localStorage.debug = 'application, main-renderer'
+
+       // perhaps expose useful commands/functions from Application class?
+       window.joystream = require('./index.js')
+
+       // Some security precautions (limit capabilities of injected code)
+       // bcoin installs a global variable, remove it
+       window.bcoin = undefined
+       // prevent any further module to be loaded (by injected code or maybe 3rd pary html components like doorbell)
+       window.require = undefined
+    </script>
+  </body>
+</html>

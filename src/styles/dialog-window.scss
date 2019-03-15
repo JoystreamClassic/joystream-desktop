@@ -1,0 +1,23 @@
+
+.dialog-window {
+  display: flex;
+
+  .container {
+    border: 1px solid black;
+    border-radius: 7px;
+    flex-basis: auto;
+    overflow: hidden;
+
+    .title {
+      font-size: 18px;
+      color: #5F5F5F;
+      background-color: white;
+      padding: 10px;
+    }
+
+    .dialog-body {
+      padding: 15px;
+      background-color: #E8E8E8;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JoyStream Updater</title>
+  <style>
+    :not(input):not(textarea),
+    :not(input):not(textarea)::after,
+    :not(input):not(textarea)::before {
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+    }
+    input, button, textarea, :focus {
+        /* You should add some other style for :focus to help UX/a11y */
+        outline: none;
+        -webkit-app-region: no-drag;
+    }
+  </style>
+</head>
+
+<!-- body.margin = 0 and #root.height:100vh is due
+ to no full screen component being merged yet -->
+
+<body style="margin:0px;-webkit-app-region: drag">
+  <div id="root" style="height:100vh;">
+  </div>
+
+  <script type="application/javascript" src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+node_modules
+joystream.log
+npm-debug.log
+
+# ignore new webstorm js stuff
+.idea
+build
+
+out/
+
+package-lock.json
+
+\.DS_Store

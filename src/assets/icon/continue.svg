@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/continue</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon/continue" fill-rule="nonzero" fill="#414A56">
+            <path d="M10.5,0 C4.7105625,0 0,4.7105625 0,10.5 C0,16.2894375 4.7105625,21 10.5,21 C16.2894375,21 21,16.2894375 21,10.5 C21,4.7105625 16.2894375,0 10.5,0 Z M15.4461562,11.053875 L8.22740625,15.647625 C8.11978125,15.7152187 7.99771875,15.75 7.875,15.75 C7.76671875,15.75 7.65778125,15.7230937 7.55934375,15.6692812 C7.34934375,15.5537812 7.21875,15.3332812 7.21875,15.09375 L7.21875,5.90625 C7.21875,5.66671875 7.34934375,5.44621875 7.55934375,5.33071875 C7.76934375,5.215875 8.02528125,5.22440625 8.2280625,5.352375 L15.4468125,9.946125 C15.6351562,10.066875 15.75,10.2755625 15.75,10.5 C15.75,10.7244375 15.6351562,10.933125 15.4461562,11.053875 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

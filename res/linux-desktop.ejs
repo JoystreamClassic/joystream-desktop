@@ -1,0 +1,15 @@
+[Desktop Entry]
+<% if (productName) { %>Name=<%= productName %>
+<% } %><% if (description) { %>Comment=<%= description %>
+<% } %><% if (genericName) { %>GenericName=<%= genericName %>
+<% } %><% if (genericName) { %>X-GNOME-FullName=<%= genericName %>
+<% } %><% if (name) { %>Path=/usr/lib/<%= name %>
+<% } %><% if (name) { %>Exec=<%= name %> %U
+<% } %><% if (name) { %>Icon=<%= name %>
+<% } %><% if (name) { %>TryExec=<%= name %>
+<% } %>Type=Application
+StartupNotify=true
+Terminal=false
+<% if (categories && categories.length) { %>Categories=<%= categories.join(';') %>;
+<% } %><% if (mimeType && mimeType.length) { %>MimeType=<%= mimeType.join(';') %>;
+<% } %>

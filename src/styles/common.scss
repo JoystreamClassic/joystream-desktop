@@ -1,0 +1,24 @@
+@import '_constants';
+
+/** labels **/
+.paused-label {
+  color: #286571;
+  background-color: #7bc3d1;
+}
+
+.inactive-label {
+  color: #818181;
+  background-color: hsla(0, 0%, 90%, 1);
+}
+
+
+
+.paid-label {
+  color: white;
+  background-color: hsla(190, 48%, 80%, 1);
+}
+
+.free-label {
+  color: #818181;
+  background-color: hsla(0, 0%, 90%, 1);
+}

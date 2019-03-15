@@ -1,0 +1,52 @@
+platform:
+  - x64
+
+environment:
+  # Githib deploy ssh key
+  priv_key: value
+  # Githib personal access token
+  GITHUB_TOKEN: value
+  # Base64 encoded string signing cert to be written to disk
+  CODE_SIGN_CERT_URL: value
+  # Path to Authenticode Code Signing Certificate
+  ELECTRON_FORGE_ELECTRON_WINSTALLER_CONFIG_CERTIFICATE_FILE: value
+  # Password to decrypt code signing cert
+  ELECTRON_FORGE_ELECTRON_WINSTALLER_CONFIG_CERTIFICATE_PASSWORD: value
+  # Node version
+  nodejs_version: "7"
+
+init:
+  - git config --global core.autocrlf input
+
+install:
+  - ps: Install-Product node $env:nodejs_version $env:platform
+  # - ps: $fileContent = "-----BEGIN RSA PRIVATE KEY-----`n"
+  # - ps: $fileContent += $env:priv_key.Replace(' ', "`n")
+  # - ps: $fileContent += "`n-----END RSA PRIVATE KEY-----`n"
+  # - ps: Set-Content c:\users\appveyor\.ssh\id_rsa $fileContent
+  - ps: Start-FileDownload $env:CODE_SIGN_CERT_URL -FileName $env:ELECTRON_FORGE_ELECTRON_WINSTALLER_CONFIG_CERTIFICATE_FILE
+  # use npm@4.6.1 due to issues between npm5 and postinstall-build module behaviour
+  # https://github.com/exogen/postinstall-build/issues/29
+  - npm install -g npm@4.6.1
+  - npm config set loglevel warn
+  - pip install "conan==0.28.1"
+  - conan remote add joystream https://api.bintray.com/conan/joystream/joystream True
+
+build_script:
+  - npm install
+  - mkdir C:\Users\appveyor\.electron-gyp
+  - mklink /J C:\Users\appveyor\.electron-gyp\.conan C:\Users\appveyor\.conan
+  - npm run rebuild
+
+deploy_script:
+  - npm run make
+  - npm run publish
+
+test: on
+
+test_script:
+  npm test
+
+branches:
+    only:
+      - /^release_\d_\d_\d/

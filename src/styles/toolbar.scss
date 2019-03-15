@@ -1,0 +1,252 @@
+@import '_constants';
+
+.toolbar {
+  display: flex;
+  flex-basis: auto;
+
+  .section-container {
+    display: flex;
+    border-radius: $max-border-radius;
+    border: 2px solid $toolbar-color;
+    background-color: white;
+
+    .section {
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      /** both have to be the same **/
+      padding-right: 8px;
+      padding-left: 8px;
+    }
+
+    .section:first-of-type {
+      padding-left: 16px; /* 11px, 16px; is 2x padding-right general case */
+    }
+
+    .section:last-of-type {
+      padding-right: 16px; /*11px, 16px; is 2x padding-right general case */
+    }
+
+    .button {
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 30px;
+      width: 30px;
+    }
+
+    .separator {
+      width: 0px;
+      border-left: 2px solid $toolbar-color;
+      /**height: 30px;  same as .button **/
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+}
+
+// Styling react-tooltip
+.torrent_table_toolbar_tooltip {
+  padding: 4px 7px !important;
+  color:white !important;
+  font-weight: bold !important;
+}
+
+/** play **/
+
+.play {
+  .button {
+    background-image: url('../assets/icon/play.svg');
+  }
+}
+
+.play:hover {
+  .button {
+    background-image: url('../assets/icon/play-hover.svg');
+  }
+}
+
+.play-disabled {
+  .button {
+    background-image: url('../assets/icon/play-disabled.svg');
+  }
+}
+
+/** start_paid_downloading **/
+
+.start_paid_downloading {
+  .button {
+    background-image: url('../assets/icon/start_paid_downloading.svg');
+  }
+}
+
+.start_paid_downloading:hover {
+  .button {
+    background-image: url('../assets/icon/start_paid_downloading-hover.svg');
+  }
+}
+
+.start_paid_downloading-disabled { // has no hover selector
+  .button {
+    background-image: url('../assets/icon/start_paid_downloading-disabled.svg');
+  }
+}
+
+/** toggle_status-start **/
+
+.toggle_status-start {
+  .button {
+    background-image: url('../assets/icon/start.svg');
+  }
+}
+
+.toggle_status-start:hover {
+  .button {
+    background-image: url('../assets/icon/start-hover.svg');
+  }
+}
+
+/** toggle_status-stop **/
+
+.toggle_status-stop {
+   .button {
+     background-image: url('../assets/icon/stop.svg');
+   }
+ }
+
+.toggle_status-stop:hover {
+  .button {
+    background-image: url('../assets/icon/stop-hover.svg');
+  }
+}
+
+/** remove **/
+
+.remove {
+  .button {
+    background-image: url('../assets/icon/remove.svg');
+  }
+}
+
+.remove:hover {
+  .button {
+    background-image: url('../assets/icon/remove-hover.svg');
+  }
+}
+
+.remove_disabled {
+    .button {
+      background-image: url('../assets/icon/dollar.svg');
+    }
+}
+
+.remove_working {
+    .button {
+      background-image: url('../assets/icon/swarm.svg');
+    }
+}
+
+/** trash **/
+
+.trash {
+  .button {
+    background-image: url('../assets/icon/trash.svg');
+  }
+}
+
+.trash:hover {
+  .button {
+    background-image: url('../assets/icon/trash-hover.svg');
+  }
+}
+
+.trash_disabled {
+  .button {
+    background-image: url('../assets/icon/dollar.svg');
+  }
+}
+
+.trash_working {
+  .button {
+    background-image: url('../assets/icon/swarm.svg');
+  }
+}
+
+/** change_buyer_terms **/
+
+.change_buyer_terms {
+  .button {
+    background-image: url('../assets/icon/change_buyer_terms.svg');
+  }
+}
+
+.change_buyer_terms:hover {
+  .button {
+    background-image: url('../assets/icon/change_buyer_terms-hover.svg');
+  }
+}
+
+.change_buyer_terms-disabled {
+  .button {
+    background-image: url('../assets/icon/change_buyer_terms-disabled.svg');
+  }
+}
+
+/** start_sell **/
+
+.start-sell {
+  .button {
+    background-image: url('../assets/icon/start-uploading.svg');
+  }
+}
+
+.start-sell:hover {
+  .button {
+    background-image: url('../assets/icon/start-uploading-hover.svg');
+  }
+}
+
+.start-sell-disabled {
+  .button {
+    background-image: url('../assets/icon/start-uploading-disabled.svg');
+  }
+}
+
+/** start-sell **/
+
+.stop-sell {
+  .button {
+    background-image: url('../assets/icon/stop-uploading.svg');
+  }
+}
+
+.stop-sell:hover {
+  .button {
+    background-image: url('../assets/icon/stop-uploading-hover.svg');
+  }
+}
+
+/** open-folder **/
+
+.open-folder {
+  .button {
+    background-image: url('../assets/icon/open-folder.svg');
+  }
+}
+
+.open-folder:hover {
+  .button {
+    background-image: url('../assets/icon/open-folder-hover.svg');
+  }
+}
+
+.more {
+  .button {
+    background-image: url('../assets/icon/more.svg');
+  }
+}
+
+.more:hover {
+  .button {
+    background-image: url('../assets/icon/more-hover.svg');
+  }
+}

@@ -1,0 +1,12 @@
+@import '_constants';
+
+.torrent_table_start_paid_downloading_badge_tooltip {
+  padding: 10px 10px !important;
+  color:white !important;
+  background-color: rgba(100,100,100,1) !important;
+  width: 300px
+}
+
+.torrent_table_start_paid_downloading_badge_tooltip::after {
+  border-bottom-color: rgba(100,100,100,1) !important;
+}
