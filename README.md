@@ -42,7 +42,7 @@ Make sure to update `~/.conan/settings.yml` and `~/.conan/profiles/default` to c
 
 ```
 # Add Joystream conan repository
-conan remote add joystream https://api.bintray.com/conan/joystream/joystream True
+conan remote add joystreamclassic https://api.bintray.com/conan/joystreamclassic/main True
 
 # Configure electron-rebuild to play nice with conan (see notes at end)
 mkdir ~/.electron-gyp
